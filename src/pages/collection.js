@@ -8,7 +8,8 @@ import Card from './card';
 const Collection = props => {
 
   const cards = useState(props.location.state.data);
-  const [flashcards, setFlashcards] = useState([])
+  const [flashcards, setFlashcards] = useState([]);
+  const [name, setName] = useState('');
   // console.log(props.match.params.id)
 
   useEffect(async () => {
@@ -23,14 +24,19 @@ const Collection = props => {
       }
       setFlashcards([...temp]);
     }
-  },[])
+  },[]);
+
+  const getCardId = (id, e, name) => {
+    console.log(id);
+    setName(e);
+  }
 
   return (
     <div className="align-center">
       <h3>Flash Card Lists</h3>
       {
         flashcards.map((item,idx) => (
-          <Card key={item.id} number={item.number} card_id={item.card} />
+          <Card key={item.id} number={item.number} card_id={item.card} onClick={(id, e) => getCardId(id, e)}/>
         ))
       }
       <form className="align-center w-60">
@@ -45,6 +51,8 @@ const Collection = props => {
 							className="form-control"
 							id="card_name"
 							required
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
 						/>
 					</Col>
 				</div>
