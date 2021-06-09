@@ -47,6 +47,14 @@ const Collection = props => {
     }
   }
 
+  const gotoPrevious = () => {
+
+  }
+
+  const gotoNext = () => {
+
+  }
+
   return (
     <div className="align-center">
       <h3>Flash Card Lists</h3>
@@ -55,6 +63,11 @@ const Collection = props => {
           <Card key={item.id} number={item.number} card_id={item.card} onClick={(id, e) => getCardId(id, e)}/>
         ))
       }
+      <div>
+        <Button onClick={()=>gotoPrevious()} color="secondary" style={{marginRight : '20px'}}>Previous</Button>
+        <Button onClick={()=>gotoNext()} color="secondary">Next</Button>
+      </div>
+      <br />
       <form className="align-center w-60">
 				<h4>Edit Card</h4>
 				<div className="row">
