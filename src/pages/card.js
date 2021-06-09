@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col } from "reactstrap"
+import { Row, Col, Button } from "reactstrap"
 
 
 const Card = props => {
@@ -20,16 +20,23 @@ const Card = props => {
         <Col lg={4} className="f-bold">
           Number
         </Col>
-        <Col lg={8} className="f-bold">
+        <Col lg={6} className="f-bold">
           Name
+        </Col>
+        <Col lg={2}>
         </Col>
       </Row>
       <Row>
         <Col lg={4}>
           {number}
         </Col>
-        <Col lg={8}>
+        <Col lg={6}>
           {name}
+        </Col>
+        <Col lg={2}>
+          <Button color="warning">
+            Edit
+          </Button>
         </Col>
       </Row>
       <br />
