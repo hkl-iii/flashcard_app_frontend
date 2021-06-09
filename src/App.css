@@ -41,3 +41,11 @@
 .f-bold {
   font-weight: bold;
 }
+
+.w-60 {
+  width: 60%;
+}
+
+.w-30 {
+  width: 30% !important;
+}
