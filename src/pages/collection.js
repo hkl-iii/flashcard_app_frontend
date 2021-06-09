@@ -27,7 +27,7 @@ const Collection = props => {
 
   return (
     <div className="align-center">
-      <h3>Card Lists</h3>
+      <h3>Flash Card Lists</h3>
       {
         flashcards.map((item,idx) => (
           <Card key={item.id} number={item.number} card_id={item.card} />
