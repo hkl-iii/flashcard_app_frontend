@@ -12,6 +12,9 @@ const Collection = props => {
   const [flashcards, setFlashcards] = useState([]);
   const [name, setName] = useState('');
   const [up_id, setUp_id] = useState('');
+
+  const [pointer, setPointer] = useState(0);
+  const [shows, setShows] = useState([]);
   // console.log(props.match.params.id)
 
   useEffect(async () => {
@@ -24,7 +27,9 @@ const Collection = props => {
       catch(error) {
         console.log(error);
       }
-      setFlashcards([...temp]);
+      const card_arrays = [...temp];
+      setFlashcards(card_arrays);
+      setShows(card_arrays.slice(0,2))
     }
   },[]);
 
@@ -48,18 +53,24 @@ const Collection = props => {
   }
 
   const gotoPrevious = () => {
-
+    if (pointer >= 2) {
+      setShows(flashcards.slice(pointer - 2, pointer));
+      setPointer(pointer - 2);
+    }
   }
 
   const gotoNext = () => {
-
+    if (pointer <= flashcards.length - 2) {
+      setShows(flashcards.slice(pointer + 2, pointer + 4));
+      setPointer(pointer + 2);
+    }
   }
 
   return (
     <div className="align-center">
       <h3>Flash Card Lists</h3>
       {
-        flashcards.map((item,idx) => (
+        shows.map((item,idx) => (
           <Card key={item.id} number={item.number} card_id={item.card} onClick={(id, e) => getCardId(id, e)}/>
         ))
       }
