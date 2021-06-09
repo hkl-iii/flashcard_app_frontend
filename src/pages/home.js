@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Collection from "./collection";
 import { withRouter } from "react-router-dom";
 import { Button, Label, Col, Input } from "reactstrap";
 
 const Home = (props) => {
 	const [collections, setCollections] = useState([]);
-	const [number, setNumber] = useState("");
 	const [name, setName] = useState("");
 
 	useEffect(() => {
@@ -21,7 +19,6 @@ const Home = (props) => {
 
 	const handleSubmit = () => {
 		const card = {
-			number: number,
 			name: name,
 		};
 		if(card.number && card.name) {
@@ -30,7 +27,6 @@ const Home = (props) => {
 			.then((res) => {
 				alert('Added new Card');
 				setName('');
-				setNumber('');
 			});
 		}
 		else {
@@ -75,22 +71,6 @@ const Home = (props) => {
 			<hr />
 			<form className="align-center w-60">
 				<h4>Add New Card</h4>
-				<div className="row">
-					<Label htmlFor="card_number" className="col-sm-4 col-form-Label">
-						Card number
-					</Label>
-					<Col sm={8}>
-						<Input
-							type="number"
-							className="form-control"
-							id="card_number"
-							required
-							value={number}
-							onChange={(e) => setNumber(e.target.value)}
-						/>
-					</Col>
-				</div>
-				<br />
 				<div className="row">
 					<Label htmlFor="card_name" className="col-sm-4 col-form-Label">
 						Card name
