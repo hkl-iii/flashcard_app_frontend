@@ -10,6 +10,7 @@ const Collection = props => {
   const cards = useState(props.location.state.data);
   const [flashcards, setFlashcards] = useState([]);
   const [name, setName] = useState('');
+  const [up_id, setUp_id] = useState('');
   // console.log(props.match.params.id)
 
   useEffect(async () => {
@@ -28,7 +29,24 @@ const Collection = props => {
 
   const getCardId = (id, e, name) => {
     console.log(id);
+    setUp_id(id);
     setName(e);
+  }
+
+  const handleUpdate = () => {
+    const card = { name : name };
+    console.log(up_id)
+    if (card.name) {
+      axios
+			.put('http://localhost:8000/api/card/' + up_id + '/', { ...card })
+			.then((res) => {
+        console.log('upa',res)
+				setName('');
+			});
+    }
+    else {
+      alert("Name is required");
+    }
   }
 
   return (
@@ -58,7 +76,7 @@ const Collection = props => {
 				</div>
 				<br />
 				<div className="row">
-					<Button color="danger" className="w-30 align-center" >Save</Button>
+					<Button color="danger" className="w-30 align-center" onClick={()=>handleUpdate()}>Update</Button>
 				</div>
 			</form>
       <br />
