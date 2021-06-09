@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, Button } from "reactstrap"
-
+import classnames from "classnames";
 
 const Card = props => {
 
   const { card_id, number } = props;
   const [name, setName] = useState('');
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/card/" + card_id).then((res) => {
@@ -15,7 +16,7 @@ const Card = props => {
   },[])
 
   return (
-    <div className="aligh-center">
+    <div className={classnames({"align-center" : true, "bg-active" : active})} onClick={()=>setActive(!active)}>
       <Row>
         <Col lg={4} className="f-bold">
           Number
