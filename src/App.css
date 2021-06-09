@@ -49,3 +49,7 @@
 .w-30 {
   width: 30% !important;
 }
+
+.bg-active {
+  background-color: #c8e6c9;
+}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Label, Col, Input } from "reactstrap";
 
 
+
 import Card from './card';
 
 const Collection = props => {
@@ -28,19 +29,16 @@ const Collection = props => {
   },[]);
 
   const getCardId = (id, e, name) => {
-    console.log(id);
     setUp_id(id);
     setName(e);
   }
 
   const handleUpdate = () => {
     const card = { name : name };
-    console.log(up_id)
     if (card.name) {
       axios
 			.put('http://localhost:8000/api/card/' + up_id + '/', { ...card })
 			.then((res) => {
-        console.log('upa',res)
 				setName('');
 			});
     }
