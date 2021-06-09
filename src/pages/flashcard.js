@@ -10,7 +10,6 @@ const Flashcard = props => {
 	useEffect(() => {
 		axios.get("http://localhost:8000/api/flashcard/").then((res) => {
 			setFlashcards(res.data);
-      console.log('f cards',res.data)
 		});
 	}, []);
 

@@ -21,7 +21,7 @@ const Home = (props) => {
 		const card = {
 			name: name,
 		};
-		if(card.number && card.name) {
+		if(card.name) {
 			axios
 			.post(`http://localhost:8000/api/card/`, { ...card })
 			.then((res) => {
