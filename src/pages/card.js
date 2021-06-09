@@ -34,7 +34,7 @@ const Card = props => {
           {name}
         </Col>
         <Col lg={2}>
-          <Button color="warning">
+          <Button color="warning" onClick={() => props.onClick(card_id, name)}>
             Edit
           </Button>
         </Col>
